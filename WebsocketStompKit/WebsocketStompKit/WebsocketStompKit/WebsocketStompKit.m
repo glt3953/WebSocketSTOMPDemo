@@ -128,11 +128,15 @@
     while ([contents count] > 0 && [contents[0] isEqual:@""]) {
         [contents removeObjectAtIndex:0];
     }
-    NSString *command = [[contents objectAtIndex:0] copy];
+    NSString *command = contents.count > 0 ? [[contents objectAtIndex:0] copy] : @"";
     NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
     NSMutableString *body = [[NSMutableString alloc] init];
     BOOL hasHeaders = NO;
-    [contents removeObjectAtIndex:0];
+    
+    if (contents.count > 0) {
+        [contents removeObjectAtIndex:0];
+    }
+    
     for(NSString *line in contents) {
         if(hasHeaders) {
             for (int i=0; i < [line length]; i++) {
@@ -572,7 +576,7 @@ CFAbsoluteTime serverActivity;
         self.clientHeartBeat = connectHeaders[kHeaderHeartBeat];
     }
     
-    [self sendFrameWithCommand:kCommandConnect
+    [self sendFrameWithCommand:kCommandConnected
                        headers:connectHeaders
                           body: nil];
     

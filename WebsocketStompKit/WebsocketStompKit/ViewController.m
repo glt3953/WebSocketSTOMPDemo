@@ -40,17 +40,20 @@
 //               }];
                // send a message
 //               [client sendTo:@"/queue/myqueue" body:@"Hello, iOS!"];
+               [client sendTo:@"" body:@"Hello, iOS!"];
                // and disconnect
 //               [client disconnect];
            }];
     
-       [client subscribeTo:@"/app/sub" messageHandler:^(STOMPMessage *message) {
-            NSLog(@"/app/sub --- %@",message.body);
-       }];
-
-       [client subscribeTo:@"/queue/1/message" messageHandler:^(STOMPMessage *message) {
-            NSLog(@"/queue/1/message --- %@",message.body);
-       }];
+//    [client sendTo:@"/queue/myqueue" body:@"Hello, iOS!"];
+    
+//       [client subscribeTo:@"/app/sub" messageHandler:^(STOMPMessage *message) {
+//            NSLog(@"/app/sub --- %@",message.body);
+//       }];
+//
+//       [client subscribeTo:@"/queue/1/message" messageHandler:^(STOMPMessage *message) {
+//            NSLog(@"/queue/1/message --- %@",message.body);
+//       }];
 
     // and disconnect
 //      [client disconnect];
